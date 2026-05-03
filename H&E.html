@@ -1,0 +1,1501 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🌸 Лексика для Даши: хобби + учёба</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ffe6f0 0%, #ffd9e8 100%);
+            font-family: 'Segoe UI', 'Quicksand', 'Nunito', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 40px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* основная карточка */
+        .lex-card {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 248, 250, 0.95);
+            border-radius: 68px;
+            box-shadow: 0 35px 60px -20px rgba(233, 69, 96, 0.35),
+                        0 0 0 1px rgba(255, 200, 220, 0.5);
+            overflow: hidden;
+            backdrop-filter: blur(2px);
+            transition: transform 0.25s ease;
+        }
+
+        .lex-card:hover {
+            transform: scale(1.01);
+        }
+
+        /* шапка с сердечками и заголовком */
+        .hero {
+            background: linear-gradient(135deg, #f5a3c1, #f06c9b);
+            padding: 28px 28px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #fff2f5;
+            font-weight: 500;
+        }
+
+        .deco-hearts {
+            font-size: 2rem;
+            letter-spacing: 10px;
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+
+        /* навигация по темам (два блока) */
+        .topic-nav {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 18px 24px 6px;
+            background: #fff2f7;
+            border-bottom: 2px dashed #fbc4d6;
+        }
+
+        .topic-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 8px 24px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #a13e60;
+            font-family: inherit;
+        }
+
+        .topic-btn.active {
+            background: #f06c9b;
+            color: white;
+            box-shadow: 0 6px 12px rgba(240, 108, 155, 0.3);
+        }
+
+        .topic-btn:not(.active):hover {
+            background: #ffe2ed;
+        }
+
+        /* контент с лексикой */
+        .content {
+            padding: 28px 28px 36px;
+        }
+
+        .lex-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .word-card {
+            background: white;
+            border-radius: 44px;
+            padding: 20px 24px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(240, 108, 155, 0.2);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+        }
+
+        .word-card:hover {
+            border-color: #f5a3c1;
+            box-shadow: 0 12px 22px -12px rgba(240, 108, 155, 0.25);
+        }
+
+        .word-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .word {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(130deg, #c23b6b, #f06c9b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .transcription {
+            font-size: 0.8rem;
+            font-family: monospace;
+            background: #f7eef2;
+            padding: 4px 12px;
+            border-radius: 40px;
+            color: #9b4b6e;
+        }
+
+        .meaning {
+            background: #fff0f5;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #b1456b;
+            margin: 8px 0 10px 0;
+        }
+
+        .example {
+            background: #fef9fb;
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            color: #2c2a3a;
+            border-left: 4px solid #f5a3c1;
+            margin-top: 8px;
+        }
+
+        .example span {
+            font-weight: 700;
+            color: #d14b7a;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 12px;
+            font-size: 0.75rem;
+            color: #b37794;
+            border-top: 1px solid #ffdfe9;
+        }
+
+        @media (max-width: 600px) {
+            .content { padding: 20px 18px; }
+            .word { font-size: 1.25rem; }
+            .word-card { padding: 16px 18px; }
+            .topic-btn { font-size: 1rem; padding: 4px 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="lex-card">
+    <div class="hero">
+        <h1>🌸 Hobbies + Education</h1>
+        <p>живая лексика для свободного общения</p>
+        <div class="deco-hearts">✧ ˚₊‧⁺˖♡ ˖⁺‧₊˚ ✧</div>
+    </div>
+
+    <div class="topic-nav">
+        <button class="topic-btn active" id="btnHobby">🎨 Хобби & отдых</button>
+        <button class="topic-btn" id="btnEdu">📚 Учёба & работа</button>
+    </div>
+
+    <div class="content">
+        <!-- блок ХОББИ (виден по умолчанию) -->
+        <div id="hobbyBlock">
+            <div class="lex-grid">
+                <!-- to take up a hobby -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to take up a hobby</span>
+                        <span class="transcription">/teɪk ʌp ə ˈhɑbi/</span>
+                    </div>
+                    <div class="meaning">✨ начать заниматься хобби (новым увлечением)</div>
+                    <div class="example"><span>📌 пример:</span> I've always wanted to take up photography, but I never have enough time.</div>
+                </div>
+
+                <!-- to unwind -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to unwind</span>
+                        <span class="transcription">/tu ʌnˈwaɪnd/</span>
+                    </div>
+                    <div class="meaning">🧘 расслабляться, отдыхать после дел</div>
+                    <div class="example"><span>📌 пример:</span> After a long week at university, I usually unwind by watching K-dramas.</div>
+                </div>
+
+                <!-- guilty pleasure -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">guilty pleasure</span>
+                        <span class="transcription">/ˈɡɪlti ˈpleʒər/</span>
+                    </div>
+                    <div class="meaning">🍫 стыдное удовольствие (то, что любишь, но немного стесняешься)</div>
+                    <div class="example"><span>📌 пример:</span> Eating ice cream at 11 p.m. is my guilty pleasure.</div>
+                </div>
+
+                <!-- to scroll through social media -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to scroll through social media</span>
+                        <span class="transcription">/skroʊl θruː ˈsoʊʃəl ˈmiːdiə/</span>
+                    </div>
+                    <div class="meaning">📱 бесконечно листать ленту (Instagram, TikTok)</div>
+                    <div class="example"><span>📌 пример:</span> I often scroll through social media before sleep, and then I can't stop.</div>
+                </div>
+
+                <!-- homebody -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">homebody</span>
+                        <span class="transcription">/ˈhoʊmˌbɑdi/</span>
+                    </div>
+                    <div class="meaning">🏠 домосед / домоседка</div>
+                    <div class="example"><span>📌 пример:</span> I'm a homebody -- my perfect weekend is reading books and drinking tea.</div>
+                </div>
+
+                <!-- go-getter -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">go-getter</span>
+                        <span class="transcription">/ˈɡoʊ ˌɡetər/</span>
+                    </div>
+                    <div class="meaning">⚡️ активный, целеустремлённый человек</div>
+                    <div class="example"><span>📌 пример:</span> My friend is a real go-getter: she studies, works part-time and still goes to the gym.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- блок ОБРАЗОВАНИЕ / РАБОТА (изначально скрыт) -->
+        <div id="eduBlock" style="display: none;">
+            <div class="lex-grid">
+                <!-- to fall behind -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to fall behind</span>
+                        <span class="transcription">/fɔːl bɪˈhaɪnd/</span>
+                    </div>
+                    <div class="meaning">📉 отставать (от программы / графика)</div>
+                    <div class="example"><span>📌 пример:</span> If you miss two lectures, it's really easy to fall behind.</div>
+                </div>
+
+                <!-- to catch up -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to catch up</span>
+                        <span class="transcription">/kætʃ ʌp/</span>
+                    </div>
+                    <div class="meaning">🏃‍♀️ нагонять, догонять (учебный материал, дедлайны)</div>
+                    <div class="example"><span>📌 пример:</span> I spent the whole weekend trying to catch up with my assignments.</div>
+                </div>
+
+                <!-- to meet a deadline -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to meet a deadline</span>
+                        <span class="transcription">/miːt ə ˈdedlaɪn/</span>
+                    </div>
+                    <div class="meaning">⏰ уложиться в дедлайн / вовремя сдать работу</div>
+                    <div class="example"><span>📌 пример:</span> I hate working under pressure, but I always meet deadlines.</div>
+                </div>
+
+                <!-- tight schedule -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">tight schedule</span>
+                        <span class="transcription">/taɪt ˈskedʒuːl/</span>
+                    </div>
+                    <div class="meaning">🗓️ плотный / загруженный график</div>
+                    <div class="example"><span>📌 пример:</span> University keeps me on a very tight schedule: lectures, seminars, homework every day.</div>
+                </div>
+
+                <!-- passionate about -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to be passionate about</span>
+                        <span class="transcription">/ˈpæʃənət əˈbaʊt/</span>
+                    </div>
+                    <div class="meaning">🔥 увлекаться, «гореть» чем-то</div>
+                    <div class="example"><span>📌 пример:</span> She's passionate about marketing and watches extra courses in her free time.</div>
+                </div>
+
+                <!-- career prospects -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">career prospects</span>
+                        <span class="transcription">/kəˈrɪər ˈprɑspekts/</span>
+                    </div>
+                    <div class="meaning">📈 карьерные перспективы</div>
+                    <div class="example"><span>📌 пример:</span> Learning English really improves your career prospects.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            💬 попробуй использовать эти фразы в разговоре или в своём посте ✨<br>
+            📚 сохрани карточку -- будем вместе тренировать speaking.
+        </div>
+    </div>
+</div>
+
+<script>
+    const hobbyBlock = document.getElementById('hobbyBlock');
+    const eduBlock = document.getElementById('eduBlock');
+    const btnHobby = document.getElementById('btnHobby');
+    const btnEdu = document.getElementById('btnEdu');
+
+    function showHobby() {
+        hobbyBlock.style.display = 'block';
+        eduBlock.style.display = 'none';
+        btnHobby.classList.add('active');
+        btnEdu.classList.remove('active');
+    }
+
+    function showEdu() {
+        hobbyBlock.style.display = 'none';
+        eduBlock.style.display = 'block';
+        btnEdu.classList.add('active');
+        btnHobby.classList.remove('active');
+    }
+
+    btnHobby.addEventListener('click', showHobby);
+    btnEdu.addEventListener('click', showEdu);
+</script>
+</body>
+</html<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🌸 Лексика для Даши: хобби + учёба</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ffe6f0 0%, #ffd9e8 100%);
+            font-family: 'Segoe UI', 'Quicksand', 'Nunito', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 40px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* основная карточка */
+        .lex-card {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 248, 250, 0.95);
+            border-radius: 68px;
+            box-shadow: 0 35px 60px -20px rgba(233, 69, 96, 0.35),
+                        0 0 0 1px rgba(255, 200, 220, 0.5);
+            overflow: hidden;
+            backdrop-filter: blur(2px);
+            transition: transform 0.25s ease;
+        }
+
+        .lex-card:hover {
+            transform: scale(1.01);
+        }
+
+        /* шапка с сердечками и заголовком */
+        .hero {
+            background: linear-gradient(135deg, #f5a3c1, #f06c9b);
+            padding: 28px 28px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #fff2f5;
+            font-weight: 500;
+        }
+
+        .deco-hearts {
+            font-size: 2rem;
+            letter-spacing: 10px;
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+
+        /* навигация по темам (два блока) */
+        .topic-nav {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 18px 24px 6px;
+            background: #fff2f7;
+            border-bottom: 2px dashed #fbc4d6;
+        }
+
+        .topic-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 8px 24px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #a13e60;
+            font-family: inherit;
+        }
+
+        .topic-btn.active {
+            background: #f06c9b;
+            color: white;
+            box-shadow: 0 6px 12px rgba(240, 108, 155, 0.3);
+        }
+
+        .topic-btn:not(.active):hover {
+            background: #ffe2ed;
+        }
+
+        /* контент с лексикой */
+        .content {
+            padding: 28px 28px 36px;
+        }
+
+        .lex-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .word-card {
+            background: white;
+            border-radius: 44px;
+            padding: 20px 24px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(240, 108, 155, 0.2);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+        }
+
+        .word-card:hover {
+            border-color: #f5a3c1;
+            box-shadow: 0 12px 22px -12px rgba(240, 108, 155, 0.25);
+        }
+
+        .word-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .word {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(130deg, #c23b6b, #f06c9b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .transcription {
+            font-size: 0.8rem;
+            font-family: monospace;
+            background: #f7eef2;
+            padding: 4px 12px;
+            border-radius: 40px;
+            color: #9b4b6e;
+        }
+
+        .meaning {
+            background: #fff0f5;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #b1456b;
+            margin: 8px 0 10px 0;
+        }
+
+        .example {
+            background: #fef9fb;
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            color: #2c2a3a;
+            border-left: 4px solid #f5a3c1;
+            margin-top: 8px;
+        }
+
+        .example span {
+            font-weight: 700;
+            color: #d14b7a;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 12px;
+            font-size: 0.75rem;
+            color: #b37794;
+            border-top: 1px solid #ffdfe9;
+        }
+
+        @media (max-width: 600px) {
+            .content { padding: 20px 18px; }
+            .word { font-size: 1.25rem; }
+            .word-card { padding: 16px 18px; }
+            .topic-btn { font-size: 1rem; padding: 4px 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="lex-card">
+    <div class="hero">
+        <h1>🌸 Hobbies + Education</h1>
+        <p>живая лексика для свободного общения</p>
+        <div class="deco-hearts">✧ ˚₊‧⁺˖♡ ˖⁺‧₊˚ ✧</div>
+    </div>
+
+    <div class="topic-nav">
+        <button class="topic-btn active" id="btnHobby">🎨 Хобби & отдых</button>
+        <button class="topic-btn" id="btnEdu">📚 Учёба & работа</button>
+    </div>
+
+    <div class="content">
+        <!-- блок ХОББИ (виден по умолчанию) -->
+        <div id="hobbyBlock">
+            <div class="lex-grid">
+                <!-- to take up a hobby -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to take up a hobby</span>
+                        <span class="transcription">/teɪk ʌp ə ˈhɑbi/</span>
+                    </div>
+                    <div class="meaning">✨ начать заниматься хобби (новым увлечением)</div>
+                    <div class="example"><span>📌 пример:</span> I’ve always wanted to take up photography, but I never have enough time.</div>
+                </div>
+
+                <!-- to unwind -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to unwind</span>
+                        <span class="transcription">/tu ʌnˈwaɪnd/</span>
+                    </div>
+                    <div class="meaning">🧘 расслабляться, отдыхать после дел</div>
+                    <div class="example"><span>📌 пример:</span> After a long week at university, I usually unwind by watching K-dramas.</div>
+                </div>
+
+                <!-- guilty pleasure -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">guilty pleasure</span>
+                        <span class="transcription">/ˈɡɪlti ˈpleʒər/</span>
+                    </div>
+                    <div class="meaning">🍫 стыдное удовольствие (то, что любишь, но немного стесняешься)</div>
+                    <div class="example"><span>📌 пример:</span> Eating ice cream at 11 p.m. is my guilty pleasure.</div>
+                </div>
+
+                <!-- to scroll through social media -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to scroll through social media</span>
+                        <span class="transcription">/skroʊl θruː ˈsoʊʃəl ˈmiːdiə/</span>
+                    </div>
+                    <div class="meaning">📱 бесконечно листать ленту (Instagram, TikTok)</div>
+                    <div class="example"><span>📌 пример:</span> I often scroll through social media before sleep, and then I can’t stop.</div>
+                </div>
+
+                <!-- homebody -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">homebody</span>
+                        <span class="transcription">/ˈhoʊmˌbɑdi/</span>
+                    </div>
+                    <div class="meaning">🏠 домосед / домоседка</div>
+                    <div class="example"><span>📌 пример:</span> I’m a homebody — my perfect weekend is reading books and drinking tea.</div>
+                </div>
+
+                <!-- go-getter -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">go-getter</span>
+                        <span class="transcription">/ˈɡoʊ ˌɡetər/</span>
+                    </div>
+                    <div class="meaning">⚡️ активный, целеустремлённый человек</div>
+                    <div class="example"><span>📌 пример:</span> My friend is a real go-getter: she studies, works part-time and still goes to the gym.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- блок ОБРАЗОВАНИЕ / РАБОТА (изначально скрыт) -->
+        <div id="eduBlock" style="display: none;">
+            <div class="lex-grid">
+                <!-- to fall behind -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to fall behind</span>
+                        <span class="transcription">/fɔːl bɪˈhaɪnd/</span>
+                    </div>
+                    <div class="meaning">📉 отставать (от программы / графика)</div>
+                    <div class="example"><span>📌 пример:</span> If you miss two lectures, it's really easy to fall behind.</div>
+                </div>
+
+                <!-- to catch up -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to catch up</span>
+                        <span class="transcription">/kætʃ ʌp/</span>
+                    </div>
+                    <div class="meaning">🏃‍♀️ нагонять, догонять (учебный материал, дедлайны)</div>
+                    <div class="example"><span>📌 пример:</span> I spent the whole weekend trying to catch up with my assignments.</div>
+                </div>
+
+                <!-- to meet a deadline -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to meet a deadline</span>
+                        <span class="transcription">/miːt ə ˈdedlaɪn/</span>
+                    </div>
+                    <div class="meaning">⏰ уложиться в дедлайн / вовремя сдать работу</div>
+                    <div class="example"><span>📌 пример:</span> I hate working under pressure, but I always meet deadlines.</div>
+                </div>
+
+                <!-- tight schedule -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">tight schedule</span>
+                        <span class="transcription">/taɪt ˈskedʒuːl/</span>
+                    </div>
+                    <div class="meaning">🗓️ плотный / загруженный график</div>
+                    <div class="example"><span>📌 пример:</span> University keeps me on a very tight schedule: lectures, seminars, homework every day.</div>
+                </div>
+
+                <!-- passionate about -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to be passionate about</span>
+                        <span class="transcription">/ˈpæʃənət əˈbaʊt/</span>
+                    </div>
+                    <div class="meaning">🔥 увлекаться, «гореть» чем-то</div>
+                    <div class="example"><span>📌 пример:</span> She’s passionate about marketing and watches extra courses in her free time.</div>
+                </div>
+
+                <!-- career prospects -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">career prospects</span>
+                        <span class="transcription">/kəˈrɪər ˈprɑspekts/</span>
+                    </div>
+                    <div class="meaning">📈 карьерные перспективы</div>
+                    <div class="example"><span>📌 пример:</span> Learning English really improves your career prospects.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            💬 попробуй использовать эти фразы в разговоре или в своём посте ✨<br>
+            📚 сохрани карточку — будем вместе тренировать speaking.
+        </div>
+    </div>
+</div>
+
+<script>
+    const hobbyBlock = document.getElementById('hobbyBlock');
+    const eduBlock = document.getElementById('eduBlock');
+    const btnHobby = document.getElementById('btnHobby');
+    const btnEdu = document.getElementById('btnEdu');
+
+    function showHobby() {
+        hobbyBlock.style.display = 'block';
+        eduBlock.style.display = 'none';
+        btnHobby.classList.add('active');
+        btnEdu.classList.remove('active');
+    }
+
+    function showEdu() {
+        hobbyBlock.style.display = 'none';
+        eduBlock.style.display = 'block';
+        btnEdu.classList.add('active');
+        btnHobby.classList.remove('active');
+    }
+
+    btnHobby.addEventListener('click', showHobby);
+    btnEdu.addEventListener('click', showEdu);
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🌸 Лексика для Даши: хобби + учёба</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ffe6f0 0%, #ffd9e8 100%);
+            font-family: 'Segoe UI', 'Quicksand', 'Nunito', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 40px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* основная карточка */
+        .lex-card {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 248, 250, 0.95);
+            border-radius: 68px;
+            box-shadow: 0 35px 60px -20px rgba(233, 69, 96, 0.35),
+                        0 0 0 1px rgba(255, 200, 220, 0.5);
+            overflow: hidden;
+            backdrop-filter: blur(2px);
+            transition: transform 0.25s ease;
+        }
+
+        .lex-card:hover {
+            transform: scale(1.01);
+        }
+
+        /* шапка с сердечками и заголовком */
+        .hero {
+            background: linear-gradient(135deg, #f5a3c1, #f06c9b);
+            padding: 28px 28px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #fff2f5;
+            font-weight: 500;
+        }
+
+        .deco-hearts {
+            font-size: 2rem;
+            letter-spacing: 10px;
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+
+        /* навигация по темам (два блока) */
+        .topic-nav {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 18px 24px 6px;
+            background: #fff2f7;
+            border-bottom: 2px dashed #fbc4d6;
+        }
+
+        .topic-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 8px 24px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #a13e60;
+            font-family: inherit;
+        }
+
+        .topic-btn.active {
+            background: #f06c9b;
+            color: white;
+            box-shadow: 0 6px 12px rgba(240, 108, 155, 0.3);
+        }
+
+        .topic-btn:not(.active):hover {
+            background: #ffe2ed;
+        }
+
+        /* контент с лексикой */
+        .content {
+            padding: 28px 28px 36px;
+        }
+
+        .lex-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .word-card {
+            background: white;
+            border-radius: 44px;
+            padding: 20px 24px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(240, 108, 155, 0.2);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+        }
+
+        .word-card:hover {
+            border-color: #f5a3c1;
+            box-shadow: 0 12px 22px -12px rgba(240, 108, 155, 0.25);
+        }
+
+        .word-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .word {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(130deg, #c23b6b, #f06c9b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .transcription {
+            font-size: 0.8rem;
+            font-family: monospace;
+            background: #f7eef2;
+            padding: 4px 12px;
+            border-radius: 40px;
+            color: #9b4b6e;
+        }
+
+        .meaning {
+            background: #fff0f5;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #b1456b;
+            margin: 8px 0 10px 0;
+        }
+
+        .example {
+            background: #fef9fb;
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            color: #2c2a3a;
+            border-left: 4px solid #f5a3c1;
+            margin-top: 8px;
+        }
+
+        .example span {
+            font-weight: 700;
+            color: #d14b7a;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 12px;
+            font-size: 0.75rem;
+            color: #b37794;
+            border-top: 1px solid #ffdfe9;
+        }
+
+        @media (max-width: 600px) {
+            .content { padding: 20px 18px; }
+            .word { font-size: 1.25rem; }
+            .word-card { padding: 16px 18px; }
+            .topic-btn { font-size: 1rem; padding: 4px 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="lex-card">
+    <div class="hero">
+        <h1>🌸 Hobbies + Education</h1>
+        <p>живая лексика для свободного общения</p>
+        <div class="deco-hearts">✧ ˚₊‧⁺˖♡ ˖⁺‧₊˚ ✧</div>
+    </div>
+
+    <div class="topic-nav">
+        <button class="topic-btn active" id="btnHobby">🎨 Хобби & отдых</button>
+        <button class="topic-btn" id="btnEdu">📚 Учёба & работа</button>
+    </div>
+
+    <div class="content">
+        <!-- блок ХОББИ (виден по умолчанию) -->
+        <div id="hobbyBlock">
+            <div class="lex-grid">
+                <!-- to take up a hobby -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to take up a hobby</span>
+                        <span class="transcription">/teɪk ʌp ə ˈhɑbi/</span>
+                    </div>
+                    <div class="meaning">✨ начать заниматься хобби (новым увлечением)</div>
+                    <div class="example"><span>📌 пример:</span> I’ve always wanted to take up photography, but I never have enough time.</div>
+                </div>
+
+                <!-- to unwind -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to unwind</span>
+                        <span class="transcription">/tu ʌnˈwaɪnd/</span>
+                    </div>
+                    <div class="meaning">🧘 расслабляться, отдыхать после дел</div>
+                    <div class="example"><span>📌 пример:</span> After a long week at university, I usually unwind by watching K-dramas.</div>
+                </div>
+
+                <!-- guilty pleasure -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">guilty pleasure</span>
+                        <span class="transcription">/ˈɡɪlti ˈpleʒər/</span>
+                    </div>
+                    <div class="meaning">🍫 стыдное удовольствие (то, что любишь, но немного стесняешься)</div>
+                    <div class="example"><span>📌 пример:</span> Eating ice cream at 11 p.m. is my guilty pleasure.</div>
+                </div>
+
+                <!-- to scroll through social media -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to scroll through social media</span>
+                        <span class="transcription">/skroʊl θruː ˈsoʊʃəl ˈmiːdiə/</span>
+                    </div>
+                    <div class="meaning">📱 бесконечно листать ленту (Instagram, TikTok)</div>
+                    <div class="example"><span>📌 пример:</span> I often scroll through social media before sleep, and then I can’t stop.</div>
+                </div>
+
+                <!-- homebody -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">homebody</span>
+                        <span class="transcription">/ˈhoʊmˌbɑdi/</span>
+                    </div>
+                    <div class="meaning">🏠 домосед / домоседка</div>
+                    <div class="example"><span>📌 пример:</span> I’m a homebody — my perfect weekend is reading books and drinking tea.</div>
+                </div>
+
+                <!-- go-getter -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">go-getter</span>
+                        <span class="transcription">/ˈɡoʊ ˌɡetər/</span>
+                    </div>
+                    <div class="meaning">⚡️ активный, целеустремлённый человек</div>
+                    <div class="example"><span>📌 пример:</span> My friend is a real go-getter: she studies, works part-time and still goes to the gym.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- блок ОБРАЗОВАНИЕ / РАБОТА (изначально скрыт) -->
+        <div id="eduBlock" style="display: none;">
+            <div class="lex-grid">
+                <!-- to fall behind -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to fall behind</span>
+                        <span class="transcription">/fɔːl bɪˈhaɪnd/</span>
+                    </div>
+                    <div class="meaning">📉 отставать (от программы / графика)</div>
+                    <div class="example"><span>📌 пример:</span> If you miss two lectures, it's really easy to fall behind.</div>
+                </div>
+
+                <!-- to catch up -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to catch up</span>
+                        <span class="transcription">/kætʃ ʌp/</span>
+                    </div>
+                    <div class="meaning">🏃‍♀️ нагонять, догонять (учебный материал, дедлайны)</div>
+                    <div class="example"><span>📌 пример:</span> I spent the whole weekend trying to catch up with my assignments.</div>
+                </div>
+
+                <!-- to meet a deadline -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to meet a deadline</span>
+                        <span class="transcription">/miːt ə ˈdedlaɪn/</span>
+                    </div>
+                    <div class="meaning">⏰ уложиться в дедлайн / вовремя сдать работу</div>
+                    <div class="example"><span>📌 пример:</span> I hate working under pressure, but I always meet deadlines.</div>
+                </div>
+
+                <!-- tight schedule -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">tight schedule</span>
+                        <span class="transcription">/taɪt ˈskedʒuːl/</span>
+                    </div>
+                    <div class="meaning">🗓️ плотный / загруженный график</div>
+                    <div class="example"><span>📌 пример:</span> University keeps me on a very tight schedule: lectures, seminars, homework every day.</div>
+                </div>
+
+                <!-- passionate about -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to be passionate about</span>
+                        <span class="transcription">/ˈpæʃənət əˈbaʊt/</span>
+                    </div>
+                    <div class="meaning">🔥 увлекаться, «гореть» чем-то</div>
+                    <div class="example"><span>📌 пример:</span> She’s passionate about marketing and watches extra courses in her free time.</div>
+                </div>
+
+                <!-- career prospects -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">career prospects</span>
+                        <span class="transcription">/kəˈrɪər ˈprɑspekts/</span>
+                    </div>
+                    <div class="meaning">📈 карьерные перспективы</div>
+                    <div class="example"><span>📌 пример:</span> Learning English really improves your career prospects.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            💬 попробуй использовать эти фразы в разговоре или в своём посте ✨<br>
+            📚 сохрани карточку — будем вместе тренировать speaking.
+        </div>
+    </div>
+</div>
+
+<script>
+    const hobbyBlock = document.getElementById('hobbyBlock');
+    const eduBlock = document.getElementById('eduBlock');
+    const btnHobby = document.getElementById('btnHobby');
+    const btnEdu = document.getElementById('btnEdu');
+
+    function showHobby() {
+        hobbyBlock.style.display = 'block';
+        eduBlock.style.display = 'none';
+        btnHobby.classList.add('active');
+        btnEdu.classList.remove('active');
+    }
+
+    function showEdu() {
+        hobbyBlock.style.display = 'none';
+        eduBlock.style.display = 'block';
+        btnEdu.classList.add('active');
+        btnHobby.classList.remove('active');
+    }
+
+    btnHobby.addEventListener('click', showHobby);
+    btnEdu.addEventListener('click', showEdu);
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🌸 Лексика для Даши: хобби + учёба</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ffe6f0 0%, #ffd9e8 100%);
+            font-family: 'Segoe UI', 'Quicksand', 'Nunito', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 40px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* основная карточка */
+        .lex-card {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 248, 250, 0.95);
+            border-radius: 68px;
+            box-shadow: 0 35px 60px -20px rgba(233, 69, 96, 0.35),
+                        0 0 0 1px rgba(255, 200, 220, 0.5);
+            overflow: hidden;
+            backdrop-filter: blur(2px);
+            transition: transform 0.25s ease;
+        }
+
+        .lex-card:hover {
+            transform: scale(1.01);
+        }
+
+        /* шапка с сердечками и заголовком */
+        .hero {
+            background: linear-gradient(135deg, #f5a3c1, #f06c9b);
+            padding: 28px 28px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #fff2f5;
+            font-weight: 500;
+        }
+
+        .deco-hearts {
+            font-size: 2rem;
+            letter-spacing: 10px;
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+
+        /* навигация по темам (два блока) */
+        .topic-nav {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 18px 24px 6px;
+            background: #fff2f7;
+            border-bottom: 2px dashed #fbc4d6;
+        }
+
+        .topic-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 8px 24px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #a13e60;
+            font-family: inherit;
+        }
+
+        .topic-btn.active {
+            background: #f06c9b;
+            color: white;
+            box-shadow: 0 6px 12px rgba(240, 108, 155, 0.3);
+        }
+
+        .topic-btn:not(.active):hover {
+            background: #ffe2ed;
+        }
+
+        /* контент с лексикой */
+        .content {
+            padding: 28px 28px 36px;
+        }
+
+        .lex-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .word-card {
+            background: white;
+            border-radius: 44px;
+            padding: 20px 24px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(240, 108, 155, 0.2);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+        }
+
+        .word-card:hover {
+            border-color: #f5a3c1;
+            box-shadow: 0 12px 22px -12px rgba(240, 108, 155, 0.25);
+        }
+
+        .word-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .word {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(130deg, #c23b6b, #f06c9b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .transcription {
+            font-size: 0.8rem;
+            font-family: monospace;
+            background: #f7eef2;
+            padding: 4px 12px;
+            border-radius: 40px;
+            color: #9b4b6e;
+        }
+
+        .meaning {
+            background: #fff0f5;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #b1456b;
+            margin: 8px 0 10px 0;
+        }
+
+        .example {
+            background: #fef9fb;
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            color: #2c2a3a;
+            border-left: 4px solid #f5a3c1;
+            margin-top: 8px;
+        }
+
+        .example span {
+            font-weight: 700;
+            color: #d14b7a;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 12px;
+            font-size: 0.75rem;
+            color: #b37794;
+            border-top: 1px solid #ffdfe9;
+        }
+
+        @media (max-width: 600px) {
+            .content { padding: 20px 18px; }
+            .word { font-size: 1.25rem; }
+            .word-card { padding: 16px 18px; }
+            .topic-btn { font-size: 1rem; padding: 4px 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="lex-card">
+    <div class="hero">
+        <h1>🌸 Hobbies + Education</h1>
+        <p>живая лексика для свободного общения</p>
+        <div class="deco-hearts">✧ ˚₊‧⁺˖♡ ˖⁺‧₊˚ ✧</div>
+    </div>
+
+    <div class="topic-nav">
+        <button class="topic-btn active" id="btnHobby">🎨 Хобби & отдых</button>
+        <button class="topic-btn" id="btnEdu">📚 Учёба & работа</button>
+    </div>
+
+    <div class="content">
+        <!-- блок ХОББИ (виден по умолчанию) -->
+        <div id="hobbyBlock">
+            <div class="lex-grid">
+                <!-- to take up a hobby -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to take up a hobby</span>
+                        <span class="transcription">/teɪk ʌp ə ˈhɑbi/</span>
+                    </div>
+                    <div class="meaning">✨ начать заниматься хобби (новым увлечением)</div>
+                    <div class="example"><span>📌 пример:</span> I’ve always wanted to take up photography, but I never have enough time.</div>
+                </div>
+
+                <!-- to unwind -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to unwind</span>
+                        <span class="transcription">/tu ʌnˈwaɪnd/</span>
+                    </div>
+                    <div class="meaning">🧘 расслабляться, отдыхать после дел</div>
+                    <div class="example"><span>📌 пример:</span> After a long week at university, I usually unwind by watching K-dramas.</div>
+                </div>
+
+                <!-- guilty pleasure -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">guilty pleasure</span>
+                        <span class="transcription">/ˈɡɪlti ˈpleʒər/</span>
+                    </div>
+                    <div class="meaning">🍫 стыдное удовольствие (то, что любишь, но немного стесняешься)</div>
+                    <div class="example"><span>📌 пример:</span> Eating ice cream at 11 p.m. is my guilty pleasure.</div>
+                </div>
+
+                <!-- to scroll through social media -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to scroll through social media</span>
+                        <span class="transcription">/skroʊl θruː ˈsoʊʃəl ˈmiːdiə/</span>
+                    </div>
+                    <div class="meaning">📱 бесконечно листать ленту (Instagram, TikTok)</div>
+                    <div class="example"><span>📌 пример:</span> I often scroll through social media before sleep, and then I can’t stop.</div>
+                </div>
+
+                <!-- homebody -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">homebody</span>
+                        <span class="transcription">/ˈhoʊmˌbɑdi/</span>
+                    </div>
+                    <div class="meaning">🏠 домосед / домоседка</div>
+                    <div class="example"><span>📌 пример:</span> I’m a homebody — my perfect weekend is reading books and drinking tea.</div>
+                </div>
+
+                <!-- go-getter -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">go-getter</span>
+                        <span class="transcription">/ˈɡoʊ ˌɡetər/</span>
+                    </div>
+                    <div class="meaning">⚡️ активный, целеустремлённый человек</div>
+                    <div class="example"><span>📌 пример:</span> My friend is a real go-getter: she studies, works part-time and still goes to the gym.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- блок ОБРАЗОВАНИЕ / РАБОТА (изначально скрыт) -->
+        <div id="eduBlock" style="display: none;">
+            <div class="lex-grid">
+                <!-- to fall behind -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to fall behind</span>
+                        <span class="transcription">/fɔːl bɪˈhaɪnd/</span>
+                    </div>
+                    <div class="meaning">📉 отставать (от программы / графика)</div>
+                    <div class="example"><span>📌 пример:</span> If you miss two lectures, it's really easy to fall behind.</div>
+                </div>
+
+                <!-- to catch up -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to catch up</span>
+                        <span class="transcription">/kætʃ ʌp/</span>
+                    </div>
+                    <div class="meaning">🏃‍♀️ нагонять, догонять (учебный материал, дедлайны)</div>
+                    <div class="example"><span>📌 пример:</span> I spent the whole weekend trying to catch up with my assignments.</div>
+                </div>
+
+                <!-- to meet a deadline -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to meet a deadline</span>
+                        <span class="transcription">/miːt ə ˈdedlaɪn/</span>
+                    </div>
+                    <div class="meaning">⏰ уложиться в дедлайн / вовремя сдать работу</div>
+                    <div class="example"><span>📌 пример:</span> I hate working under pressure, but I always meet deadlines.</div>
+                </div>
+
+                <!-- tight schedule -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">tight schedule</span>
+                        <span class="transcription">/taɪt ˈskedʒuːl/</span>
+                    </div>
+                    <div class="meaning">🗓️ плотный / загруженный график</div>
+                    <div class="example"><span>📌 пример:</span> University keeps me on a very tight schedule: lectures, seminars, homework every day.</div>
+                </div>
+
+                <!-- passionate about -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">to be passionate about</span>
+                        <span class="transcription">/ˈpæʃənət əˈbaʊt/</span>
+                    </div>
+                    <div class="meaning">🔥 увлекаться, «гореть» чем-то</div>
+                    <div class="example"><span>📌 пример:</span> She’s passionate about marketing and watches extra courses in her free time.</div>
+                </div>
+
+                <!-- career prospects -->
+                <div class="word-card">
+                    <div class="word-row">
+                        <span class="word">career prospects</span>
+                        <span class="transcription">/kəˈrɪər ˈprɑspekts/</span>
+                    </div>
+                    <div class="meaning">📈 карьерные перспективы</div>
+                    <div class="example"><span>📌 пример:</span> Learning English really improves your career prospects.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            💬 попробуй использовать эти фразы в разговоре или в своём посте ✨<br>
+            📚 сохрани карточку — будем вместе тренировать speaking.
+        </div>
+    </div>
+</div>
+
+<script>
+    const hobbyBlock = document.getElementById('hobbyBlock');
+    const eduBlock = document.getElementById('eduBlock');
+    const btnHobby = document.getElementById('btnHobby');
+    const btnEdu = document.getElementById('btnEdu');
+
+    function showHobby() {
+        hobbyBlock.style.display = 'block';
+        eduBlock.style.display = 'none';
+        btnHobby.classList.add('active');
+        btnEdu.classList.remove('active');
+    }
+
+    function showEdu() {
+        hobbyBlock.style.display = 'none';
+        eduBlock.style.display = 'block';
+        btnEdu.classList.add('active');
+        btnHobby.classList.remove('active');
+    }
+
+    btnHobby.addEventListener('click', showHobby);
+    btnEdu.addEventListener('click', showEdu);
+</script>
+</body>
+</html>>
